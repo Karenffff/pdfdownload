@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Generator</title>
+</head>
+<body>
+    <h1>PDF Link Generator</h1>
+    <form action="{% url 'pdf' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="link" placeholder="Enter your link" style="width: 300px; height: 40px;">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('pdfForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            // Get the link from the input field
+            const link = document.getElementById('linkInput').value;
+            if (!link) {
+                alert("Please enter a link");
+                return;
+            }
+
+            // Send the link to the backend as JSON
+            const response = await fetch('/pdf/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ link: link })
+            });
+
+            // If PDF is successfully generated, download it
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'dynamic_pdf.pdf';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url); // Clean up URL object
+            } else {
+                alert("Failed to generate PDF. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
