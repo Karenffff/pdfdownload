@@ -1,6 +1,8 @@
 #!/bin/bash
+python3.9 -m pip install -r requirements.txt
 echo "building the project"
 playwright install chromium
+playwright install-deps
 python3.9 -m venv venv
 source venv/bin/activate
 python3.9 -m pip install -r requirements.txt
