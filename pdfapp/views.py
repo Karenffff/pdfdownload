@@ -30,7 +30,7 @@ def generate_pdf(request):
         output_path = f"{uuid.uuid4()}.pdf"
 
         # Convert HTML to PDF
-        pdf_file = HTML(string=html_content).write_pdf()
+        pdf_file = HTML(string=html_content, base_url=request.build_absolute_uri()).write_pdf()
 
         # Return as a response
         response = HttpResponse(pdf_file, content_type='application/pdf')
