@@ -1,3 +1,5 @@
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,7 +43,7 @@
 <body>
     <div class="container">
         <div class="pdf-icon">
-            <img src="https://file-personal.cloudmailbox.net/reference/images/filetypes/v4_pdf.png" alt="PDF Icon">
+            <img src="{% static 'images/pdf.png' %}" alt="PDF Icon" width="100">
         </div>
         <h5 class="fw-bold">RFQ_JO2025.New.pdf</h5>
         <p><strong>31.5MB</strong></p>
